@@ -1,24 +1,31 @@
-import logo from './logo.svg';
+import React from 'react';
+import { BrowserRouter as Router, Routes, Route } from 'react-router-dom';
+import Header from './components/Header/Header';
+import Footer from './components/Footer/Footer';
+import TodoList from './pages/TodoList/TodoList';
+import ClickCounter from './pages/ClickCounter/ClickCounter';
+import TicTacToe from './pages/TicTacToe/TicTacToe';
+import Calculator from './pages/Calculator/Calculator';
+import CepFinder from './pages/CepFinder/CepFinder';
 import './App.css';
 
 function App() {
   return (
-    <div className="App">
-      <header className="App-header">
-        <img src={logo} className="App-logo" alt="logo" />
-        <p>
-          Edit <code>src/App.js</code> and save to reload.
-        </p>
-        <a
-          className="App-link"
-          href="https://reactjs.org"
-          target="_blank"
-          rel="noopener noreferrer"
-        >
-          Learn React
-        </a>
-      </header>
-    </div>
+    <Router>
+      <div className="App">
+        <Header />
+        <main className="content">
+          <Routes>
+            <Route path="/" element={<TodoList />} />
+            <Route path="/contador" element={<ClickCounter />} />
+            <Route path="/jogo-da-velha" element={<TicTacToe />} />
+            <Route path="/calculadora" element={<Calculator />} />
+            <Route path="/cep" element={<CepFinder />} />
+          </Routes>
+        </main>
+        <Footer />
+      </div>
+    </Router>
   );
 }
 
